@@ -3,7 +3,7 @@ from rich.console import Console
 from rich.table import Table
 
 import demo.demo as py_demo
-import build_demo.demo as cy_demo
+import build_demo.demo as cy_demo # pyright: ignore[reportMissingImports]
 
 ITERATIONS = 50_000  # adjust for ~5 min in Python
 
