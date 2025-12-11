@@ -158,6 +158,7 @@ def build_wheel_and_install():
 def clean_output(clean_name: str):
     console.print(f"[red]🧹 Cleaning output for '{clean_name}'...[/]")
     root = Path(".").resolve()
+    target_folder = root / clean_name
 
     # Remove build and cython_cache
     if Path("build").exists():
@@ -170,19 +171,14 @@ def clean_output(clean_name: str):
         if f.is_file() and f.suffix in [".so", ".pyd"]:
             f.unlink(missing_ok=True)
 
-    # Remove any parent folder containing a subfolder named clean_name but keep clean_name folder
-    for folder in root.glob(f"**/{clean_name}"):
-        if folder.is_dir() and folder.name == clean_name:
-            parent = folder.parent
-            for item in parent.iterdir():
-                if item != folder:
-                    if item.is_dir():
-                        shutil.rmtree(item, ignore_errors=True)
-                    else:
-                        item.unlink(missing_ok=True)
+    # Remove all *.so/*.pyd inside the -c folder recursively
+    if target_folder.exists() and target_folder.is_dir():
+        for f in target_folder.rglob("*"):
+            if f.is_file() and f.suffix in [".so", ".pyd"]:
+                f.unlink(missing_ok=True)
 
-    console.print(f"[bold green]✅ Cleaned output related to '{clean_name}'[/]")
-
+    console.print(f"[bold green]✅ Cleaned all compiled files in '{clean_name}'[/]")
+    
 def cythonize_library(lib_name: str):
     spec = importlib.util.find_spec(lib_name)
     if not spec or not spec.origin:
