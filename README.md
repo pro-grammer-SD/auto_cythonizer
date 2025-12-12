@@ -12,7 +12,8 @@ pip install auto-cythonizer
 ```
 
 ## 💪 Example(s)
-[Here ✌️](https://github.com/pro-grammer-SD/auto_cythonizer_tests)
+
+[Find em' here](https://github.com/pro-grammer-SD/auto_cythonizer_tests)
 
 ## ✨ Features
 
@@ -29,17 +30,12 @@ pip install auto-cythonizer
 ## 🚀 Usage
 
 ```console
-# Compile a Python folder
-auto-cythonizer -t my_project
-
-# Compile and install
-auto-cythonizer -t my_project -i
-
-# Clean build artifacts
-auto-cythonizer -c my_project
-
-# Auto-Cythonize an installed library
-auto-cythonizer -l some_library
+-t, --target TARGET  📁 Folder to Cythonize
+-o, --output OUTPUT  📦 Output directory
+-i, --install        📀 Build wheel & install
+-l, --lib LIB        📚 Cythonize installed library
+-c, --clean CLEAN    🧹 Clean compiled files in folder
+-x, --pyxview        👀 View all generated .pyx files with file sizes
 ```
 
 ## 📄 License
