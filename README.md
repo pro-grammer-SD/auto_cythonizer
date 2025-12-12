@@ -11,6 +11,9 @@
 pip install auto-cythonizer
 ```
 
+## 💪 Example(s)
+[Here ✌️](https://github.com/pro-grammer-SD/auto_cythonizer_tests)
+
 ## ✨ Features
 
 - 🐍 Automatically converts Python `.py` files into `.pyx` and compiles them to `.so`/`.pyd` with maximum Cython optimizations.
